@@ -26,25 +26,30 @@ function transitionPage(el, groupOut, groupIn) {
 /*************************************************************************/
 
 function delayedFadeOut(div, range) {
-  // Your solution here
-  fadeOut(div)
+  setTimeout(() => {
+    fadeOut(div)
+  }, range + 500)
 }
 
 function delayedFadeIn(div, range) {
-  // Your solution here
-  fadeIn(div)
+  setTimeout(() => {
+    fadeIn(div)
+  }, range + 500)
 }
 
 function fadeAllOut(el, group) {
-  // Your solution here
+  let divTime = SHORTRANGE
   group.forEach(div => {
-    delayedFadeOut(div)
+    if (el !== div) {
+      delayedFadeOut(div, divTime += 100)
+    } else {
+      delayedFadeOut(div, LONGESTPOSSIBLE)
+    }
   })
 }
 
 function fadeAllIn(group) {
-  // Your solution here
   group.forEach(div => {
-    delayedFadeIn(div)
+    delayedFadeIn(div, LONGESTPOSSIBLE)
   })
 }
